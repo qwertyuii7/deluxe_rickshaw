@@ -5,6 +5,7 @@ import { TasselDecoration } from "@/components/TasselDecoration";
 import { MeterCounter } from "@/components/MeterCounter";
 import { HeroSection } from "@/components/HeroSection";
 import { PlaylistTuner } from "@/components/PlaylistTuner";
+import { FAQSection } from "@/components/FAQSection";
 import { RideFooter } from "@/components/RideFooter";
 import { usePlayer } from "@/hooks/usePlayer";
 import { BackgroundSlider } from "@/components/BackgroundSlider";
@@ -95,6 +96,8 @@ export default function Home() {
           onStateChange={setStatus}
         />
       </div>
+
+      {isBoarded && <FAQSection />}
 
       <RideFooter />
 
