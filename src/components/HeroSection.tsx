@@ -37,21 +37,21 @@ export function HeroSection({
   onStateChange
 }: HeroSectionProps) {
   return (
-    <section className="w-full min-h-[100svh] flex flex-col items-center justify-between relative px-4 pt-12 sm:pt-14 pb-2 sm:pb-4">
-
+    <section className="w-full min-h-[100svh] flex flex-col items-center relative px-4 pt-[140px] sm:pt-[150px] md:pt-24 pb-8">
+      
       {/* Main Content (Title + Player) */}
-      <div className="relative z-10 flex flex-col items-center w-full animate-fade-in-up">
+      <div className="relative z-10 flex flex-col items-center justify-center w-full animate-fade-in-up flex-1">
         
         {/* Title */}
         <h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] text-rickshaw-yellow leading-none text-center mb-1 sm:mb-2 drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] flex flex-col items-center"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] text-rickshaw-yellow leading-none text-center mb-2 sm:mb-4 drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)] flex flex-col items-center"
           style={{ fontFamily: "var(--font-yatra-one)" }}
         >
           <span>डीलक्स ऑटो</span>
           <span>रिक्शा</span>
         </h1>
         <p
-          className="text-xs sm:text-sm md:text-base text-white/40 tracking-[0.2em] sm:tracking-widest uppercase mb-4 sm:mb-6"
+          className="text-[10px] sm:text-sm md:text-base text-white/40 tracking-[0.2em] sm:tracking-widest uppercase mb-6 sm:mb-8"
           style={{ fontFamily: "var(--font-inter)" }}
         >
           देसी धुन · Zero AC
@@ -130,11 +130,8 @@ export function HeroSection({
         </div>
       </div>
 
-      {/* Spacer to separate player and shayari slightly */}
-      <div className="flex-1 min-h-[1rem]" />
-
       {/* Shayari Generator at Bottom */}
-      <div className="w-full mt-auto mb-2 sm:mb-4 max-w-4xl px-2 sm:px-4">
+      <div className="w-full mt-10 max-w-4xl px-2 sm:px-4">
         <ShayariGenerator />
       </div>
     </section>
