@@ -7,7 +7,7 @@ export type PlaybackStatus = 'idle' | 'loading' | 'playing' | 'error';
 export function usePlayer() {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [status, setStatus] = useState<PlaybackStatus>('idle');
-  const [source, setSource] = useState<PlaybackSource>('youtube');
+  const [source, setSource] = useState<PlaybackSource>('jiosaavn');
   const [activeYoutubeIndex, setActiveYoutubeIndex] = useState(0);
   
   // Track debounce ref
@@ -24,7 +24,7 @@ export function usePlayer() {
     // Debounce track change to avoid iframe spam
     changeTimeoutRef.current = setTimeout(() => {
       setCurrentTrackIndex(index);
-      setSource('youtube');
+      setSource(playlist[index].defaultSource as PlaybackSource || 'jiosaavn');
       setActiveYoutubeIndex(0);
       setStatus('loading');
     }, 400);
@@ -39,10 +39,14 @@ export function usePlayer() {
   }, [currentTrackIndex, playTrack]);
 
   const handleJioSaavnError = useCallback(() => {
-    console.warn('JioSaavn iframe failed to load or timed out. Falling back to YouTube.');
-    setSource('youtube');
-    setActiveYoutubeIndex(0);
-  }, []);
+    if (currentTrack.youtubeCandidates && currentTrack.youtubeCandidates.length > 0) {
+      console.warn('JioSaavn iframe failed to load or timed out. Falling back to YouTube.');
+      setSource('youtube');
+      setActiveYoutubeIndex(0);
+    } else {
+      console.warn('JioSaavn timed out, but no YouTube fallback available. Sticking with JioSaavn.');
+    }
+  }, [currentTrack]);
 
   const handleYoutubeError = useCallback((errorCode: number) => {
     // 101 / 150 = embedding disabled by owner
@@ -62,7 +66,7 @@ export function usePlayer() {
   // Expose immediate set function for initial boarding action (no debounce)
   const boardAndPlay = useCallback(() => {
     setCurrentTrackIndex(0);
-    setSource('youtube');
+    setSource(playlist[0].defaultSource as PlaybackSource || 'jiosaavn');
     setActiveYoutubeIndex(0);
     setStatus('loading');
   }, []);

@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { Disc, MonitorPlay } from "lucide-react";
 import YouTube, { YouTubeEvent } from "react-youtube";
 import { PlaybackSource, PlaybackStatus } from "@/hooks/usePlayer";
 
@@ -27,6 +28,8 @@ export function AudioController({
 }: AudioControllerProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [isVideoMode, setIsVideoMode] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   // Handle JioSaavn iframe timeout
   useEffect(() => {
@@ -56,8 +59,14 @@ export function AudioController({
 
   const handleYoutubeStateChange = (event: YouTubeEvent) => {
     const state = event.data;
-    if (state === 1) onStateChange('playing');
-    else if (state === 3) onStateChange('loading');
+    if (state === 1) {
+      onStateChange('playing');
+      setIsPlaying(true);
+    } else if (state === 3) {
+      onStateChange('loading');
+    } else if (state === 2) {
+      setIsPlaying(false);
+    }
   };
 
   const handleYoutubeErrorInternal = (event: YouTubeEvent) => {
@@ -87,27 +96,56 @@ export function AudioController({
     if (!activeId) return null;
 
     return (
-      <div className="w-full aspect-video rounded-xl overflow-hidden bg-black/50 border border-white/5">
-        <YouTube
-          key={activeId}
-          videoId={activeId}
-          className="w-full h-full"
-          iframeClassName="w-full h-full"
-          opts={{
-            width: "100%",
-            height: "100%",
-            playerVars: {
-              autoplay: 1,
-              modestbranding: 1,
-              playsinline: 1,
-              rel: 0,
-              fs: 0,
-            },
-          }}
-          onReady={handleYoutubeReady}
-          onStateChange={handleYoutubeStateChange}
-          onError={handleYoutubeErrorInternal}
-        />
+      <div className="w-full aspect-video rounded-xl overflow-hidden bg-black/50 border border-white/5 relative group">
+        
+        {/* Toggle Button */}
+        <button
+          onClick={() => setIsVideoMode(!isVideoMode)}
+          className="absolute top-2 right-2 z-20 p-1.5 rounded-full bg-black/60 text-white/70 hover:text-white backdrop-blur-sm border border-white/10 transition-all active:scale-95"
+          title={isVideoMode ? "Switch to Audio Mode" : "Switch to Video Mode"}
+        >
+          {isVideoMode ? <MonitorPlay size={14} /> : <Disc size={14} />}
+        </button>
+
+        {/* Vinyl Audio Mode UI */}
+        {!isVideoMode && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/80">
+            <div className={`relative w-24 h-24 rounded-full border-4 border-black/40 shadow-xl overflow-hidden flex items-center justify-center ${isPlaying ? 'animate-[spin_4s_linear_infinite]' : ''}`}>
+              <img 
+                src={`https://img.youtube.com/vi/${activeId}/hqdefault.jpg`} 
+                alt="Thumbnail" 
+                className="w-full h-full object-cover scale-150"
+              />
+              <div className="absolute inset-0 rounded-full border border-white/10 shadow-[inset_0_0_20px_rgba(0,0,0,0.8)]"></div>
+              {/* Vinyl center hole */}
+              <div className="absolute w-4 h-4 bg-black/90 rounded-full border border-white/5 shadow-inner"></div>
+            </div>
+          </div>
+        )}
+
+        {/* YouTube Iframe */}
+        <div className={`w-full h-full transition-opacity duration-500 ${!isVideoMode ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+          <YouTube
+            key={activeId}
+            videoId={activeId}
+            className="w-full h-full"
+            iframeClassName="w-full h-full"
+            opts={{
+              width: "100%",
+              height: "100%",
+              playerVars: {
+                autoplay: 1,
+                modestbranding: 1,
+                playsinline: 1,
+                rel: 0,
+                fs: 0,
+              },
+            }}
+            onReady={handleYoutubeReady}
+            onStateChange={handleYoutubeStateChange}
+            onError={handleYoutubeErrorInternal}
+          />
+        </div>
       </div>
     );
   }
