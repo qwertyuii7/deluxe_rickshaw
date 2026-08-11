@@ -62,17 +62,17 @@ export default function Home() {
       <BackgroundSlider isRainMode={isRainMode} />
 
       {/* Floating Control Bar - Top Left */}
-      <div className="fixed top-8 left-4 z-50 flex flex-col gap-4 items-start">
+      <div className="fixed top-4 sm:top-8 left-2 sm:left-4 z-50 flex flex-col gap-2 sm:gap-4 items-start scale-90 sm:scale-100 origin-top-left">
         <WeatherToggle isRainMode={isRainMode} onToggle={() => setIsRainMode(!isRainMode)} />
         
         {/* Playlist Toggle Button */}
         <button
           onClick={() => setIsPlaylistOpen(true)}
-          className="flex items-center justify-center gap-3 px-8 py-4 rounded-full backdrop-blur-md border bg-white/10 border-white/20 text-white/90 hover:bg-white/20 hover:border-rickshaw-yellow/50 shadow-[0_0_30px_rgba(255,215,0,0.1)] transition-all duration-500 transform hover:scale-105 active:scale-95"
+          className="flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-8 py-2 sm:py-4 rounded-full backdrop-blur-md border bg-white/10 border-white/20 text-white/90 hover:bg-white/20 hover:border-rickshaw-yellow/50 shadow-[0_0_30px_rgba(255,215,0,0.1)] transition-all duration-500 transform hover:scale-105 active:scale-95"
           style={{ fontFamily: "var(--font-baloo-2)" }}
         >
-          <ListMusic size={24} className="text-rickshaw-yellow" />
-          <span className="text-xl font-medium tracking-wide">गाना चुनो</span>
+          <ListMusic size={20} className="text-rickshaw-yellow sm:w-6 sm:h-6" />
+          <span className="text-base sm:text-xl font-medium tracking-wide">गाना चुनो</span>
         </button>
       </div>
 
