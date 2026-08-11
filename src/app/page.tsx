@@ -10,6 +10,7 @@ import { RideFooter } from "@/components/RideFooter";
 import { usePlayer } from "@/hooks/usePlayer";
 import { BackgroundSlider } from "@/components/BackgroundSlider";
 import { WeatherToggle } from "@/components/WeatherToggle";
+import { FullscreenToggle } from "@/components/FullscreenToggle";
 import { ListMusic, X } from "lucide-react";
 
 export default function Home() {
@@ -64,6 +65,7 @@ export default function Home() {
       {/* Floating Control Bar - Top Left */}
       <div className="fixed top-4 sm:top-8 left-2 sm:left-4 z-50 flex flex-col gap-2 sm:gap-4 items-start scale-90 sm:scale-100 origin-top-left">
         <WeatherToggle isRainMode={isRainMode} onToggle={() => setIsRainMode(!isRainMode)} />
+        <FullscreenToggle />
         
         {/* Playlist Toggle Button */}
         <button
