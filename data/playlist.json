@@ -14,6 +14,48 @@
   },
   {
     "id": 2,
+    "title": "Bahut Jatate Ho Chah Humse",
+    "titleHi": "बहुत जताते हो चाह हमसे",
+    "artist": "Alka Yagnik, Mohammad Aziz",
+    "vibe": "Truckvaala banger 🛻💥",
+    "jiosaavnId": "fallback",
+    "youtubeCandidates": [
+      "P7P2zqzEYRY",
+      "iZ1dNdX92jo",
+      "gaYpZ-lGhQg"
+    ],
+    "defaultSource": "youtube"
+  },
+  {
+    "id": 3,
+    "title": "Mere Rang Mein Rangne Wali",
+    "titleHi": "मेरे रंग में रंगने वाली",
+    "artist": "S. P. Balasubrahmanyam",
+    "vibe": "Classic 90s Romance 🌹",
+    "jiosaavnId": "fallback",
+    "youtubeCandidates": [
+      "Kxd6po6wL4w",
+      "qsKPEVIgrxU",
+      "xxG3XA4fCww"
+    ],
+    "defaultSource": "youtube"
+  },
+  {
+    "id": 4,
+    "title": "Main Yahan Hoon",
+    "titleHi": "मैं यहाँ हूँ",
+    "artist": "Udit Narayan",
+    "vibe": "Rainy day memories 🌧️",
+    "jiosaavnId": "fallback",
+    "youtubeCandidates": [
+      "m6Y8xEfyXTs",
+      "Hyx-3cQ6uLM",
+      "m6Y8xEfyXTs"
+    ],
+    "defaultSource": "youtube"
+  },
+  {
+    "id": 5,
     "title": "Lollipop Lagelu",
     "titleHi": "लॉलीपॉप लागेलू",
     "artist": "Pawan Singh",
@@ -26,7 +68,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": 6,
     "title": "Aashiq Banaya Aapne",
     "titleHi": "आशिक़ बनाया आपने",
     "artist": "Himesh Reshammiya",
@@ -39,7 +81,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 7,
     "title": "Jeeta Tha Jiske Liye",
     "titleHi": "जीता था जिसके लिए",
     "artist": "Kumar Sanu, Alka Yagnik",
@@ -52,7 +94,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": 8,
     "title": "Kajra Re",
     "titleHi": "कजरा रे",
     "artist": "Alisha Chinai, Shankar Mahadevan",
@@ -65,7 +107,7 @@
     ]
   },
   {
-    "id": 6,
+    "id": 9,
     "title": "Ek Ladki Ko Dekha",
     "titleHi": "एक लड़की को देखा",
     "artist": "Kumar Sanu",
@@ -78,7 +120,7 @@
     ]
   },
   {
-    "id": 7,
+    "id": 10,
     "title": "Didi Tera Devar Deewana",
     "titleHi": "दीदी तेरा देवर दीवाना",
     "artist": "Lata Mangeshkar",
@@ -91,7 +133,7 @@
     ]
   },
   {
-    "id": 8,
+    "id": 11,
     "title": "Chaiyya Chaiyya",
     "titleHi": "छैय्या छैय्या",
     "artist": "Sukhwinder Singh, Sapna Awasthi",
@@ -104,7 +146,7 @@
     ]
   },
   {
-    "id": 9,
+    "id": 12,
     "title": "प्यार किया तो निभाना",
     "subtitle": "Major Saab",
     "jiosaavnId": "dX1y0gD9",
@@ -119,7 +161,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 10,
+    "id": 13,
     "title": "हो नहीं सकता",
     "subtitle": "Diljale",
     "jiosaavnId": "msL8QpPl",
@@ -134,7 +176,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 11,
+    "id": 14,
     "title": "चलती है क्या 9 से 12",
     "subtitle": "Judwaa",
     "jiosaavnId": "fMag1Tga",
@@ -149,7 +191,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 12,
+    "id": 15,
     "title": "आँख मारे",
     "subtitle": "Tere Mere Sapne",
     "jiosaavnId": "Gul9kMlq",
@@ -164,7 +206,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 13,
+    "id": 16,
     "title": "एक सनम चाहिए",
     "subtitle": "Aashiqui",
     "jiosaavnId": "RETnhyj4",
@@ -179,7 +221,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 14,
+    "id": 17,
     "title": "मैं खिलाड़ी तू अनाड़ी",
     "subtitle": "Main Khiladi Tu Anari",
     "jiosaavnId": "iprLqckr",
@@ -194,7 +236,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 15,
+    "id": 18,
     "title": "दिल का क़रार",
     "subtitle": "Sangharsh",
     "jiosaavnId": "8eMZyh9K",
@@ -209,7 +251,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 16,
+    "id": 19,
     "title": "भोली भाली लड़की",
     "subtitle": "Sabse Bada Khiladi",
     "jiosaavnId": "QS0eJats",
@@ -224,7 +266,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 17,
+    "id": 20,
     "title": "अँखियों से गोली मारे",
     "subtitle": "Dulhe Raja",
     "jiosaavnId": "t6PdrExF",
@@ -239,7 +281,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 18,
+    "id": 21,
     "title": "ट्रक वाले",
     "subtitle": "Ranjit Bawa",
     "jiosaavnId": "MQ8ZKh05",
@@ -254,7 +296,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 19,
+    "id": 22,
     "title": "ड्राइवरी",
     "subtitle": "Gurnam Bhullar",
     "jiosaavnId": "p2qe46dt",
@@ -269,7 +311,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 20,
+    "id": 23,
     "title": "ट्राले",
     "subtitle": "Ravinder Grewal",
     "jiosaavnId": "smqFM3gG",
@@ -284,7 +326,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 21,
+    "id": 24,
     "title": "पुत्त जट्टां दे",
     "subtitle": "Mankirt Aulakh",
     "jiosaavnId": "rB-xW5aI",
@@ -299,7 +341,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 22,
+    "id": 25,
     "title": "ड्राइवर महकमा",
     "subtitle": "Chandra Brar",
     "jiosaavnId": "t5cxk0re",
@@ -314,7 +356,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 23,
+    "id": 26,
     "title": "8 पर्चे",
     "subtitle": "Baani Sandhu",
     "jiosaavnId": "DUAq5Osr",
@@ -329,7 +371,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 24,
+    "id": 27,
     "title": "मेरे सपनो की रानी",
     "subtitle": "Aradhana",
     "jiosaavnId": "KZCCxUd6",
@@ -344,7 +386,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 25,
+    "id": 28,
     "title": "ये शाम मस्तानी",
     "subtitle": "Kati Patang",
     "jiosaavnId": "BTmSW371",
@@ -359,7 +401,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 26,
+    "id": 29,
     "title": "ज़िन्दगी एक सफर है सुहाना",
     "subtitle": "Andaz",
     "jiosaavnId": "wtPJmOHH",
@@ -374,7 +416,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 27,
+    "id": 30,
     "title": "मुसाफिर हूँ यारों",
     "subtitle": "Parichay",
     "jiosaavnId": "J1LLsTGA",
@@ -389,7 +431,7 @@
     "defaultSource": "youtube"
   },
   {
-    "id": 28,
+    "id": 31,
     "title": "आते जाते खूबसूरत आवारा",
     "subtitle": "Anurodh",
     "jiosaavnId": "W07FO1ht",

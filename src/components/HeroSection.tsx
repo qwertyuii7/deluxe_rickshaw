@@ -4,6 +4,7 @@ import { SkipBack, SkipForward } from "lucide-react";
 import { AudioController } from "@/components/AudioController";
 import { ShayariGenerator } from "@/components/ShayariGenerator";
 import { PlaybackSource, PlaybackStatus } from "@/hooks/usePlayer";
+import playlist from "../../data/playlist.json";
 
 interface Track {
   id: number;
@@ -105,7 +106,7 @@ export function HeroSection({
               <span className="text-[10px] text-white/20 uppercase tracking-widest"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
-                {currentTrack.id} / 8
+                {currentTrack.id} / {playlist.length}
               </span>
 
               <button
