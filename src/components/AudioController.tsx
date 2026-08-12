@@ -40,6 +40,8 @@ export const AudioController = forwardRef(({
           setIsPlaying(false);
           onStateChange('paused');
         } else {
+          player.unMute();
+          player.setVolume(100);
           player.playVideo();
           setIsPlaying(true);
           onStateChange('playing');
@@ -68,8 +70,8 @@ export const AudioController = forwardRef(({
   const handleYoutubeReady = (event: YouTubeEvent) => {
     setPlayer(event.target);
     try {
-      event.target.unMute();
-      event.target.setVolume(100);
+      // Do NOT forcefully unmute here. Mobile browsers will aggressively block the player 
+      // if it attempts to autoplay with sound without a fresh gesture.
       event.target.playVideo();
     } catch (e) {
       console.log("Autoplay blocked:", e);
@@ -138,6 +140,8 @@ export const AudioController = forwardRef(({
                   setIsPlaying(false);
                   onStateChange('paused');
                 } else {
+                  player.unMute();
+                  player.setVolume(100);
                   player.playVideo();
                   setIsPlaying(true);
                   onStateChange('playing');
