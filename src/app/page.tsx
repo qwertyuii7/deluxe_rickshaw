@@ -14,7 +14,7 @@ import { FullscreenToggle } from "@/components/FullscreenToggle";
 import { ListMusic, X } from "lucide-react";
 
 export default function Home() {
-  const [isBoarded, setIsBoarded] = useState(true);
+  const [isBoarded, setIsBoarded] = useState(false);
   const [isRainMode, setIsRainMode] = useState(false);
   const [isPlaylistOpen, setIsPlaylistOpen] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
@@ -41,11 +41,6 @@ export default function Home() {
     handleYoutubeError,
     setStatus
   } = usePlayer();
-
-  React.useEffect(() => {
-    // Automatically start playing on mount
-    boardAndPlay();
-  }, [boardAndPlay]);
 
   const handleBoard = () => {
     setIsBoarded(true);
