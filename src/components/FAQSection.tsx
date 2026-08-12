@@ -48,37 +48,37 @@ export function FAQSection() {
     <section className="w-full max-w-4xl mx-auto px-4 py-16 relative z-30">
       <div className="text-center mb-10">
         <h2 
-          className="text-3xl md:text-4xl text-rickshaw-yellow mb-2 drop-shadow-md"
+          className="text-3xl md:text-5xl text-rickshaw-yellow mb-4 drop-shadow-md"
           style={{ fontFamily: "var(--font-yatra-one)" }}
         >
           अक्सर पूछे जाने वाले सवाल (FAQ)
         </h2>
-        <p className="text-white/40 text-sm tracking-widest uppercase" style={{ fontFamily: "var(--font-inter)" }}>
+        <p className="text-white/60 text-sm md:text-base tracking-widest uppercase font-medium" style={{ fontFamily: "var(--font-inter)" }}>
           Strictly for VIP Customers
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         {faqs.map((faq, index) => (
           <div 
             key={index}
-            className={`glass-gold rounded-xl overflow-hidden border transition-colors duration-300 ${
-              openIndex === index ? "border-rickshaw-yellow/50 bg-black/60" : "border-white/10 hover:border-rickshaw-yellow/30 bg-black/40"
+            className={`glass-gold rounded-xl overflow-hidden border transition-all duration-300 shadow-lg ${
+              openIndex === index ? "border-rickshaw-yellow/60 bg-black/80 shadow-[0_4px_20px_rgba(255,215,0,0.15)] scale-[1.02]" : "border-white/20 hover:border-rickshaw-yellow/40 bg-black/60 hover:bg-black/70"
             }`}
           >
             <button
               onClick={() => toggle(index)}
-              className="w-full px-5 py-4 flex items-center justify-between text-left focus:outline-none"
+              className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
             >
               <span 
-                className={`text-lg md:text-xl pr-4 transition-colors duration-300 ${openIndex === index ? "text-rickshaw-yellow" : "text-white/80"}`}
+                className={`text-xl md:text-2xl pr-4 transition-colors duration-300 ${openIndex === index ? "text-rickshaw-yellow font-medium" : "text-white/95"}`}
                 style={{ fontFamily: "var(--font-baloo-2)" }}
               >
                 {faq.q}
               </span>
               <ChevronDown 
-                className={`text-rickshaw-yellow/60 transition-transform duration-300 shrink-0 ${openIndex === index ? "rotate-180" : ""}`} 
-                size={20} 
+                className={`text-rickshaw-yellow/80 transition-transform duration-300 shrink-0 ${openIndex === index ? "rotate-180" : ""}`} 
+                size={24} 
               />
             </button>
             
@@ -87,7 +87,7 @@ export function FAQSection() {
                 openIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
               }`}
             >
-              <div className="px-5 pb-5 pt-1 text-white/60 leading-relaxed border-t border-white/5" style={{ fontFamily: "var(--font-inter)" }}>
+              <div className="px-6 pb-6 pt-2 text-white/90 text-base md:text-lg leading-relaxed border-t border-white/10" style={{ fontFamily: "var(--font-inter)" }}>
                 {faq.a}
               </div>
             </div>

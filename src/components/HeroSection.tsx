@@ -37,7 +37,7 @@ export function HeroSection({
   onStateChange
 }: HeroSectionProps) {
   return (
-    <section className="w-full min-h-[100svh] flex flex-col items-center relative px-4 pt-[140px] sm:pt-[150px] md:pt-24 pb-8">
+    <section className="w-full min-h-[100svh] flex flex-col items-center relative px-4 pt-[220px] sm:pt-[240px] md:pt-32 lg:pt-28 pb-8">
       
       {/* Main Content (Title + Player) */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full animate-fade-in-up flex-1">

@@ -18,7 +18,7 @@ export function MeterCounter({ onHornClick, isShaking }: MeterCounterProps) {
   }, []);
 
   return (
-    <div className="fixed top-4 right-4 z-40 bg-black p-3 md:p-4 rounded border-4 border-gray-700 shadow-[0_0_15px_rgba(0,0,0,0.8)] flex flex-col items-end transform rotate-1">
+    <div className="fixed top-4 right-2 sm:right-4 z-40 bg-black p-3 md:p-4 rounded border-4 border-gray-700 shadow-[0_0_15px_rgba(0,0,0,0.8)] flex flex-col items-end transform rotate-1 scale-90 sm:scale-100 origin-top-right">
       <span className="text-[10px] md:text-xs text-gray-400 font-inter uppercase tracking-widest mb-1">
         Fare Meter
       </span>
