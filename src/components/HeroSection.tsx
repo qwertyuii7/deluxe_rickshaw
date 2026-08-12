@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { SkipBack, SkipForward } from "lucide-react";
+import React, { useRef } from "react";
+import { SkipBack, SkipForward, Play, Pause } from "lucide-react";
 import { AudioController } from "@/components/AudioController";
 import { ShayariGenerator } from "@/components/ShayariGenerator";
 import { PlaybackSource, PlaybackStatus } from "@/hooks/usePlayer";
@@ -20,6 +20,7 @@ interface HeroSectionProps {
   currentTrack: Track | null;
   source: PlaybackSource;
   activeYoutubeIndex: number;
+  status: PlaybackStatus;
   onNext: () => void;
   onPrev: () => void;
   onJioSaavnError: () => void;
@@ -30,13 +31,16 @@ interface HeroSectionProps {
 export function HeroSection({ 
   currentTrack, 
   source, 
-  activeYoutubeIndex, 
+  activeYoutubeIndex,
+  status,
   onNext, 
   onPrev, 
   onJioSaavnError, 
   onYoutubeError, 
   onStateChange
 }: HeroSectionProps) {
+  const audioRef = useRef<any>(null);
+
   return (
     <section className="w-full min-h-[100svh] flex flex-col items-center relative px-4 pt-[220px] sm:pt-[240px] md:pt-32 lg:pt-28 pb-8">
       
@@ -84,6 +88,7 @@ export function HeroSection({
             {/* Playback module */}
             <div className="relative w-full">
               <AudioController
+                ref={audioRef}
                 track={currentTrack}
                 source={source}
                 activeYoutubeIndex={activeYoutubeIndex}
@@ -94,7 +99,7 @@ export function HeroSection({
             </div>
 
             {/* Playlist Controls - Keep these to switch tracks regardless of iframe state */}
-            <div className="flex items-center justify-center gap-8 pt-3 border-t border-white/5">
+            <div className="flex items-center justify-center gap-4 pt-3 border-t border-white/5">
               <button
                 onClick={onPrev}
                 className="text-white/30 hover:text-white transition-colors p-2"
@@ -103,11 +108,13 @@ export function HeroSection({
                 <SkipBack size={18} />
               </button>
 
-              <span className="text-[10px] text-white/20 uppercase tracking-widest"
-                style={{ fontFamily: "var(--font-inter)" }}
+              <button
+                onClick={() => audioRef.current?.togglePlay()}
+                className="text-black bg-rickshaw-yellow hover:bg-white transition-colors p-3 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(255,215,0,0.3)] active:scale-95"
+                aria-label={status === 'playing' ? "Pause" : "Play"}
               >
-                {currentTrack.id} / {playlist.length}
-              </span>
+                {status === 'playing' ? <Pause size={20} className="fill-current" /> : <Play size={20} className="fill-current ml-0.5" />}
+              </button>
 
               <button
                 onClick={onNext}
@@ -116,6 +123,14 @@ export function HeroSection({
               >
                 <SkipForward size={18} />
               </button>
+            </div>
+            
+            <div className="text-center w-full mt-2">
+              <span className="text-[10px] text-white/20 uppercase tracking-widest block"
+                style={{ fontFamily: "var(--font-inter)" }}
+              >
+                {currentTrack.id} / {playlist.length}
+              </span>
             </div>
           </div>
         ) : (

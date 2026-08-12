@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useImperativeHandle, forwardRef } from "react";
 import { Disc, MonitorPlay } from "lucide-react";
 import YouTube, { YouTubeEvent } from "react-youtube";
 import { PlaybackSource, PlaybackStatus } from "@/hooks/usePlayer";
@@ -18,18 +18,35 @@ interface AudioControllerProps {
   onStateChange: (status: PlaybackStatus) => void;
 }
 
-export function AudioController({
+export const AudioController = forwardRef(({
   track,
   source,
   activeYoutubeIndex,
   onJioSaavnError,
   onYoutubeError,
   onStateChange
-}: AudioControllerProps) {
+}: AudioControllerProps, ref) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [isVideoMode, setIsVideoMode] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [player, setPlayer] = useState<any>(null);
+
+  useImperativeHandle(ref, () => ({
+    togglePlay: () => {
+      if (player) {
+        if (isPlaying) {
+          player.pauseVideo();
+          setIsPlaying(false);
+          onStateChange('paused');
+        } else {
+          player.playVideo();
+          setIsPlaying(true);
+          onStateChange('playing');
+        }
+      }
+    }
+  }), [player, isPlaying, onStateChange]);
 
   // Handle JioSaavn iframe timeout
   useEffect(() => {
@@ -47,7 +64,6 @@ export function AudioController({
     return () => clearTimeout(timeoutId);
   }, [track.jiosaavnId, source, iframeLoaded, onJioSaavnError]);
 
-  const [player, setPlayer] = useState<any>(null);
 
   const handleYoutubeReady = (event: YouTubeEvent) => {
     setPlayer(event.target);
@@ -68,6 +84,7 @@ export function AudioController({
     } else if (state === 3) {
       onStateChange('loading');
     } else if (state === 2) {
+      onStateChange('paused');
       setIsPlaying(false);
     }
   };
@@ -116,8 +133,15 @@ export function AudioController({
             className="absolute inset-0 z-10 flex items-center justify-center bg-black/80 cursor-pointer group-hover:bg-black/70 transition-colors"
             onClick={() => {
               if (player) {
-                if (isPlaying) player.pauseVideo();
-                else player.playVideo();
+                if (isPlaying) {
+                  player.pauseVideo();
+                  setIsPlaying(false);
+                  onStateChange('paused');
+                } else {
+                  player.playVideo();
+                  setIsPlaying(true);
+                  onStateChange('playing');
+                }
               }
             }}
             title={isPlaying ? "Pause" : "Play"}
@@ -180,4 +204,6 @@ export function AudioController({
       />
     </div>
   );
-}
+});
+
+AudioController.displayName = "AudioController";

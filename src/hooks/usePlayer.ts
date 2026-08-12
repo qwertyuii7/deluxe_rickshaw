@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import playlist from '../../data/playlist.json';
 
 export type PlaybackSource = 'jiosaavn' | 'youtube' | 'external';
-export type PlaybackStatus = 'idle' | 'loading' | 'playing' | 'error';
+export type PlaybackStatus = 'idle' | 'loading' | 'playing' | 'paused' | 'error';
 
 export function usePlayer() {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);

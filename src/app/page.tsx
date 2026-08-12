@@ -33,6 +33,7 @@ export default function Home() {
     currentTrackIndex,
     source,
     activeYoutubeIndex,
+    status,
     playTrack,
     playNext,
     playPrev,
@@ -91,6 +92,7 @@ export default function Home() {
           currentTrack={currentTrack as any}
           source={source}
           activeYoutubeIndex={activeYoutubeIndex}
+          status={status as any}
           onNext={playNext}
           onPrev={playPrev}
           onJioSaavnError={handleJioSaavnError}
