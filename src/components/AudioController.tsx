@@ -47,7 +47,10 @@ export function AudioController({
     return () => clearTimeout(timeoutId);
   }, [track.jiosaavnId, source, iframeLoaded, onJioSaavnError]);
 
+  const [player, setPlayer] = useState<any>(null);
+
   const handleYoutubeReady = (event: YouTubeEvent) => {
+    setPlayer(event.target);
     try {
       event.target.unMute();
       event.target.setVolume(100);
@@ -109,7 +112,16 @@ export function AudioController({
 
         {/* Vinyl Audio Mode UI */}
         {!isVideoMode && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/80">
+          <div 
+            className="absolute inset-0 z-10 flex items-center justify-center bg-black/80 cursor-pointer group-hover:bg-black/70 transition-colors"
+            onClick={() => {
+              if (player) {
+                if (isPlaying) player.pauseVideo();
+                else player.playVideo();
+              }
+            }}
+            title={isPlaying ? "Pause" : "Play"}
+          >
             <div className={`relative w-24 h-24 rounded-full border-4 border-black/40 shadow-xl overflow-hidden flex items-center justify-center ${isPlaying ? 'animate-[spin_4s_linear_infinite]' : ''}`}>
               <img 
                 src={`https://img.youtube.com/vi/${activeId}/hqdefault.jpg`} 

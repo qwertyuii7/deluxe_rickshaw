@@ -21,13 +21,12 @@ export function usePlayer() {
       clearTimeout(changeTimeoutRef.current);
     }
 
-    // Debounce track change to avoid iframe spam
-    changeTimeoutRef.current = setTimeout(() => {
-      setCurrentTrackIndex(index);
-      setSource(playlist[index].defaultSource as PlaybackSource || 'jiosaavn');
-      setActiveYoutubeIndex(0);
-      setStatus('loading');
-    }, 400);
+    // No debounce! Browser autoplay policies block playVideo() if it happens inside a setTimeout.
+    // The user gesture is lost if we wait, which results in the video defaulting to 'paused'.
+    setCurrentTrackIndex(index);
+    setSource(playlist[index].defaultSource as PlaybackSource || 'jiosaavn');
+    setActiveYoutubeIndex(0);
+    setStatus('loading');
   }, []);
 
   const playNext = useCallback(() => {
