@@ -11,6 +11,8 @@ import { usePlayer } from "@/hooks/usePlayer";
 import { BackgroundSlider } from "@/components/BackgroundSlider";
 import { WeatherToggle } from "@/components/WeatherToggle";
 import { FullscreenToggle } from "@/components/FullscreenToggle";
+import { LightningStrike } from "@/components/LightningStrike";
+import { RainCanvas } from "@/components/RainCanvas";
 import { ListMusic, X } from "lucide-react";
 
 export default function Home() {
@@ -18,6 +20,15 @@ export default function Home() {
   const [isRainMode, setIsRainMode] = useState(false);
   const [isPlaylistOpen, setIsPlaylistOpen] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
+  const [lightningTrigger, setLightningTrigger] = useState(0);
+
+  const toggleRainMode = () => {
+    const newMode = !isRainMode;
+    setIsRainMode(newMode);
+    if (newMode) {
+      setLightningTrigger(prev => prev + 1);
+    }
+  };
 
   const handleHorn = () => {
     if (isShaking) return;
@@ -61,11 +72,13 @@ export default function Home() {
 
   return (
     <main className={`relative min-h-screen flex flex-col text-white overflow-hidden ${isShaking ? "animate-horn-shake" : ""}`}>
+      <LightningStrike triggerId={lightningTrigger} />
+      <RainCanvas isRainMode={isRainMode} />
       <BackgroundSlider isRainMode={isRainMode} />
 
       {/* Floating Control Bar - Top Left */}
       <div className="fixed top-4 sm:top-8 left-2 sm:left-4 z-50 flex flex-col gap-2 sm:gap-4 items-start scale-90 sm:scale-100 origin-top-left">
-        <WeatherToggle isRainMode={isRainMode} onToggle={() => setIsRainMode(!isRainMode)} />
+        <WeatherToggle isRainMode={isRainMode} onToggle={toggleRainMode} />
         <FullscreenToggle />
         
         {/* Playlist Toggle Button */}
