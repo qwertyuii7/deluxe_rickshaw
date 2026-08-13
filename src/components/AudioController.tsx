@@ -29,13 +29,14 @@ export const AudioController = forwardRef(({
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [isVideoMode, setIsVideoMode] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [player, setPlayer] = useState<any>(null);
 
   useImperativeHandle(ref, () => ({
     togglePlay: () => {
-      if (player) {
-        if (isPlaying) {
+      if (player && typeof player.getPlayerState === 'function') {
+        const state = player.getPlayerState();
+        if (state === 1 || state === 3) { // playing or buffering
           player.pauseVideo();
           setIsPlaying(false);
           onStateChange('paused');
@@ -48,7 +49,7 @@ export const AudioController = forwardRef(({
         }
       }
     }
-  }), [player, isPlaying, onStateChange]);
+  }), [player, onStateChange]);
 
   // Handle JioSaavn iframe timeout
   useEffect(() => {
@@ -134,8 +135,9 @@ export const AudioController = forwardRef(({
           <div 
             className="absolute inset-0 z-10 flex items-center justify-center bg-black/80 cursor-pointer group-hover:bg-black/70 transition-colors"
             onClick={() => {
-              if (player) {
-                if (isPlaying) {
+              if (player && typeof player.getPlayerState === 'function') {
+                const state = player.getPlayerState();
+                if (state === 1 || state === 3) {
                   player.pauseVideo();
                   setIsPlaying(false);
                   onStateChange('paused');
@@ -179,6 +181,7 @@ export const AudioController = forwardRef(({
                 playsinline: 1,
                 rel: 0,
                 fs: 0,
+                controls: 0,
               },
             }}
             onReady={handleYoutubeReady}
