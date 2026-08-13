@@ -70,7 +70,7 @@ export function ClassicRadioPlayer({
       </div>
 
       {/* Outer Casing */}
-      <div className="wood-casing p-5 sm:p-6 select-none relative shadow-2xl z-10">
+      <div id="radio-casing" className="wood-casing p-5 sm:p-6 select-none relative shadow-2xl z-10">
         {/* Screws */}
         <div className="screw absolute top-2 left-2 scale-75"></div>
         <div className="screw absolute top-2 right-2 scale-75" style={{ transform: 'rotate(20deg)' }}></div>
